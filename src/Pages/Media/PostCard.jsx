@@ -1,8 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const PostCard = ({ post }) => {
-  const { _id, status, image, email } = post;
+  const { _id, status, image } = post;
+  const url = `http://localhost:5000/comment?post_id=${_id}`;
+
+  const {
+    data: comments = [],
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["comments", _id],
+    queryFn: async () => {
+      const res = await fetch(url);
+      const data = await res.json();
+      return data;
+    },
+  });
   return (
     <div className="max-w-xs rounded-md shadow-md bg-gray-900 text-gray-100 mx-auto">
       <img
@@ -12,9 +27,24 @@ const PostCard = ({ post }) => {
       />
       <div className="flex flex-col justify-between p-6 space-y-8">
         <div className="space-y-2">
-          <h2 className="font-thin tracking-wide">{post?.name}</h2>
-          <h2 className="font-thin tracking-wide">{email}</h2>
-          <p className="text-gray-100 text-xl font-semibold">{status}</p>
+          <h2 className="font-thin ">
+            Uploader: <span className="font-semibold">{post?.name}</span>
+          </h2>
+
+          <p className="text-gray-100  font-semibold">
+            <span className="text-yellow-400">Caption:</span> {status}
+          </p>
+          {comments.map((comment) => (
+            <p className="text-sm">
+              <span
+                key={comment.key}
+                className="text-base  mr-1 text-yellow-400"
+              >
+                {comment.name}:
+              </span>
+              {comment.comment}
+            </p>
+          ))}
         </div>
         <Link to={`/details/${_id}`}>
           <button

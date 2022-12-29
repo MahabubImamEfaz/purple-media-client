@@ -36,6 +36,7 @@ const Login = () => {
 
   const handleLogin = (data) => {
     setLoginError("");
+    reset();
     console.log(data);
     signIn(data.email, data.password)
       .then((result) => {

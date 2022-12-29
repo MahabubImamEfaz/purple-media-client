@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const SignUp = () => {
@@ -16,6 +16,7 @@ const SignUp = () => {
   const [loginError, setLoginError] = useState("");
   const { createUser, updateUser, providerLogin } = useContext(AuthContext);
   const googleAuth = new GoogleAuthProvider();
+  const navigate = useLocation();
 
   const handleGoogleSignIn = () => {
     providerLogin(googleAuth)
@@ -37,6 +38,7 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         toast.success("User created succesfully");
+
         // const userinfo = {
         //   displayName: data.name,
         // };
@@ -79,7 +81,7 @@ const SignUp = () => {
     <div className="h-[1000px] flex justify-center items-center bg-[#e0aaff]">
       <div className="w-96 p-7">
         <h2 className="text-center text-3xl text-center text-black font-bold mb-5">
-          LOGIN
+          SIGN IN
         </h2>
         <form onSubmit={handleSubmit(handleSignIn)}>
           <div className="form-control w-full max-w-xs">

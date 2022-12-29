@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+
 import { AuthContext } from "../../Context/AuthProvider";
 import BookingModal from "./BookingModal";
 
@@ -32,6 +32,14 @@ const About = () => {
         <h2 className="text-center text-3xl text-center text-black font-bold mb-5">
           About
         </h2>
+        <div className="flex justify-end">
+          <label
+            htmlFor="my-modal"
+            className="btn  w-1/3 bg-[#9d4edd] text-white hover:bg-[#c77dff] mt-5"
+          >
+            Edit
+          </label>
+        </div>
         <form>
           <div className="form-control w-full max-w-xs">
             <label className="label">
@@ -83,12 +91,6 @@ const About = () => {
           </div>
         </form>
 
-        <label
-          htmlFor="my-modal"
-          className="btn  w-full bg-[#9d4edd] text-white hover:bg-[#c77dff] mt-5"
-        >
-          Modal
-        </label>
         <BookingModal
           about={about}
           refetch={refetch}
