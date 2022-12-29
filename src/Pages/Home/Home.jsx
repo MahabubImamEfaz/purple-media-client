@@ -37,6 +37,7 @@ const Home = () => {
             image: imgData.data.url,
             email: user?.email,
             name: user?.displayName,
+            likes: 0,
           };
           console.log(post);
           fetch("http://localhost:5000/posts", {

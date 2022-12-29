@@ -34,12 +34,9 @@ const PostCard = ({ post }) => {
           <p className="text-gray-100  font-semibold">
             <span className="text-yellow-400">Caption:</span> {status}
           </p>
-          {comments.map((comment) => (
+          {comments.map((comment, index) => (
             <p className="text-sm">
-              <span
-                key={comment.key}
-                className="text-base  mr-1 text-yellow-400"
-              >
+              <span key={index} className="text-base  mr-1 text-yellow-400">
                 {comment.name}:
               </span>
               {comment.comment}

@@ -9,6 +9,7 @@ import Media from "./Pages/Media/Media";
 import Details from "./Pages/Media/Details";
 import About from "./Pages/About/About";
 import UpdatedMessage from "./Pages/Media/UpdatedMessage";
+import PrivateRoute from "./Routes/PrivateRoute";
 
 function App() {
   const router = createBrowserRouter([
@@ -18,7 +19,11 @@ function App() {
       children: [
         {
           path: "/",
-          element: <Home></Home>,
+          element: (
+            <PrivateRoute>
+              <Home></Home>
+            </PrivateRoute>
+          ),
         },
         {
           path: "/login",
@@ -34,7 +39,11 @@ function App() {
         },
         {
           path: "/about",
-          element: <About></About>,
+          element: (
+            <PrivateRoute>
+              <About></About>
+            </PrivateRoute>
+          ),
         },
         {
           path: "/updated",
@@ -42,16 +51,14 @@ function App() {
         },
         {
           path: "/details/:id",
-          element: <Details></Details>,
+          element: (
+            <PrivateRoute>
+              <Details></Details>
+            </PrivateRoute>
+          ),
           loader: ({ params }) =>
             fetch(`http://localhost:5000/details/${params.id}`),
         },
-        // {
-        //   path: "/about/:id",
-        //   element: <About></About>,
-        //   loader: ({ params }) =>
-        //     fetch(`http://localhost:5000/about/${params.id}`),
-        // },
       ],
     },
   ]);
