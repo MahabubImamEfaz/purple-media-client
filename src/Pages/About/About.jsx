@@ -6,7 +6,7 @@ import BookingModal from "./BookingModal";
 
 const About = () => {
   const { user } = useContext(AuthContext);
-  const url = `http://localhost:5000/about?email=${user?.email}`;
+  const url = `https://purple-media-server.vercel.app/about?email=${user?.email}`;
 
   const {
     data: about = [],

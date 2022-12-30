@@ -3,12 +3,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../Context/AuthProvider";
+import Trending from "./Trending";
 
 const Home = () => {
   // const { data: userIn = [] } = useQuery({
   //   queryKey: ["userIn"],
   //   queryFn: () =>
-  //     fetch("http://localhost:5000/userinfo").then((res) => res.json()),
+  //     fetch("https://purple-media-server.vercel.app/userinfo").then((res) => res.json()),
   // });
 
   const imageHostKey = process.env.REACT_APP_imgbb_key;
@@ -40,7 +41,7 @@ const Home = () => {
             likes: 0,
           };
           console.log(post);
-          fetch("http://localhost:5000/posts", {
+          fetch("https://purple-media-server.vercel.app/posts", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -109,6 +110,7 @@ const Home = () => {
           </form>
         </div>
       </div>
+      <Trending></Trending>
     </div>
   );
 };

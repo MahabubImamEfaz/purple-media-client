@@ -28,7 +28,7 @@ const Details = () => {
       name: user?.displayName,
       status: status,
     };
-    fetch("http://localhost:5000/comments", {
+    fetch("https://purple-media-server.vercel.app/comments", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -44,7 +44,7 @@ const Details = () => {
       });
   };
 
-  const url = `http://localhost:5000/comment?post_id=${_id}`;
+  const url = `https://purple-media-server.vercel.app/comment?post_id=${_id}`;
 
   const { data: comments = [], refetch } = useQuery({
     queryKey: ["comments", _id],
@@ -58,7 +58,7 @@ const Details = () => {
   const likeObject = {
     like,
   };
-  fetch(`http://localhost:5000/updatelike/${_id}`, {
+  fetch(`https://purple-media-server.vercel.app/updatelike/${_id}`, {
     method: "PUT",
     headers: {
       "content-type": "application/json",
@@ -69,7 +69,7 @@ const Details = () => {
     .then((data) => {
       console.log(data);
       if (data.modifiedCount > 0) {
-        toast.success(`${name} thanks for your reaction`);
+        toast(`${user?.displayName} thanks for your reaction`);
       }
     });
 

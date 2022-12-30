@@ -57,7 +57,9 @@ function App() {
             </PrivateRoute>
           ),
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/details/${params.id}`),
+            fetch(
+              `https://purple-media-server.vercel.app/details/${params.id}`
+            ),
         },
       ],
     },

@@ -52,8 +52,10 @@ const Login = () => {
   };
 
   return (
-    <div className="h-[700px] flex justify-center items-center bg-[#e0aaff]">
+    <div className="h-[700px] flex justify-center  bg-[#e0aaff]">
       <div className="w-96 p-7">
+        <h1 className="text-center font-light">test email: test1122@ph.com</h1>
+        <h1 className="text-center font-light">test password: 123456</h1>
         <h2 className="text-center text-3xl text-center text-black font-bold mb-5">
           LOGIN
         </h2>

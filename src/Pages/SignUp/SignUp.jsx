@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const SignUp = () => {
@@ -16,7 +16,6 @@ const SignUp = () => {
   const [loginError, setLoginError] = useState("");
   const { createUser, updateUser, providerLogin } = useContext(AuthContext);
   const googleAuth = new GoogleAuthProvider();
-  const navigate = useLocation();
 
   const handleGoogleSignIn = () => {
     providerLogin(googleAuth)
@@ -64,7 +63,7 @@ const SignUp = () => {
 
   const saveUser = (name, email, university, address, password) => {
     const user = { name, email, university, address, password };
-    fetch("http://localhost:5000/users", {
+    fetch("https://purple-media-server.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

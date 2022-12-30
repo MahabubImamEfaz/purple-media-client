@@ -19,13 +19,16 @@ const BookingModal = ({ about, refetch, isLoading }) => {
       address: address,
     };
 
-    fetch(`http://localhost:5000/aboutupdate/${about[0]?._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(update),
-    })
+    fetch(
+      `https://purple-media-server.vercel.app/aboutupdate/${about[0]?._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(update),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const PostCard = ({ post }) => {
   const { _id, status, image } = post;
-  const url = `http://localhost:5000/comment?post_id=${_id}`;
+  const url = `https://purple-media-server.vercel.app/comment?post_id=${_id}`;
 
   const {
     data: comments = [],
